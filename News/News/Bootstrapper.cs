@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Autofac;
+using News.Services;
 using News.ViewModels;
 
 namespace News
@@ -12,6 +13,8 @@ namespace News
         {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<MainShell>();
+            containerBuilder.RegisterType<NewsService>();
+
             containerBuilder.RegisterAssemblyTypes(typeof(App).Assembly)
             .Where(x => x.IsSubclassOf(typeof(ViewModel)));
 
